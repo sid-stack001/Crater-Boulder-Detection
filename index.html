@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YOLO Object Detection</title>
+</head>
+<body>
+    <h1>Upload an Image for Object Detection</h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="file" id="fileInput" accept="image/*">
+        <button type="button" onclick="uploadImage()">Upload</button>
+    </form>
+    <h2>Result:</h2>
+    <img id="resultImage" src="" alt="Result will be displayed here">
+
+    <script>
+        function uploadImage() {
+            const formData = new FormData(document.getElementById('uploadForm'));
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.blob())
+            .then(blob => {
+                const url = URL.createObjectURL(blob);
+                document.getElementById('resultImage').src = url;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
