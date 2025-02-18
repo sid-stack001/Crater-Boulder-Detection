@@ -31,7 +31,7 @@ Lunar missions require **precise hazard detection** for safe landings and surfac
 6️⃣ **Result Export** – Processed images, XML detection data, and reports are available for download  
 
 
-Note: fro running the code, the trained yolo .pt file is required, which is not uploaded, due to size constraints. It is available [here](https://drive.google.com/file/d/1LGhTr1WuqYC2eNBksiMvA9T_ptEQnFKf/view?usp=drive_link).
+Note: for running the code, the trained yolo .pt file is required, which is not uploaded, due to size constraints. It is available [here](https://drive.google.com/file/d/1LGhTr1WuqYC2eNBksiMvA9T_ptEQnFKf/view?usp=drive_link).
 
 
 
@@ -39,8 +39,6 @@ Note: fro running the code, the trained yolo .pt file is required, which is not 
 
 
 <img width="718" alt="Screenshot 2024-07-25 151332" src="https://github.com/user-attachments/assets/a3432359-208e-40eb-9f8e-ab1c51df493b" />
-
-![predicted_circle_high_res_1](https://github.com/user-attachments/assets/2b6077d0-ea9d-454a-9dfb-d923c66c0ec8)
 
 
 
