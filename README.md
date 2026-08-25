@@ -142,4 +142,3 @@ This project is distributed under the MIT License. See [LICENSE](F:/project/crat
 
 ---
 
-If you would like the README to include a short architecture diagram or step-by-step example output with captions, confirm and I will add that using the existing assets (no new files).
