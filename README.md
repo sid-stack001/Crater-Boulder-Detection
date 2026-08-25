@@ -1,99 +1,145 @@
 # Crater & Boulder Detection
 
-A polished AI project for detecting craters and boulders in lunar or planetary imagery using YOLO-based object detection. The repository is structured to make it easy to run locally, showcase in interviews, and present professionally on GitHub or a resume.
+Professional implementation for automated detection of craters and boulders in high-resolution planetary imagery using Ultralytics YOLO and standard image-processing libraries.
+
+---
 
 ## Overview
 
-This project combines computer vision and deep learning to identify hazardous geological features in high-resolution images of planetary surfaces. It is designed for lunar landing site analysis, terrain assessment, and autonomous exploration support.
+This repository provides a compact, reproducible pipeline for processing large planetary images, running tile-based object detection, producing annotated visualizations, and exporting structured detection outputs. The project is suitable for demonstrations, portfolio inclusion, and prototype evaluation for tasks such as lunar landing-site assessment and hazard mapping.
 
-## Why this project stands out
+---
 
-- End-to-end deep-learning workflow for crater and boulder detection
-- Tile-based processing for larger images
-- Exportable detection outputs in XML and label summaries
-- Interactive web interface for image upload and inference
-- Clean project layout suitable for portfolio and resume presentation
+## Repository contents
 
-## Tech stack
+- [src/](F:/project/crater/Crater-Boulder-Detection.worktrees/repo-cleanup-and-professionalization/src) — Streamlit and Flask entry scripts.
+- [models/](F:/project/crater/Crater-Boulder-Detection.worktrees/repo-cleanup-and-professionalization/models) — Trained model weights and related artifacts (not committed).
+- [notebooks/](F:/project/crater/Crater-Boulder-Detection.worktrees/repo-cleanup-and-professionalization/notebooks) — Exploratory Jupyter notebooks used during development.
+- [assets/images/](F:/project/crater/Crater-Boulder-Detection.worktrees/repo-cleanup-and-professionalization/assets/images) — Example input images and generated visual outputs.
+- [assets/results/](F:/project/crater/Crater-Boulder-Detection.worktrees/repo-cleanup-and-professionalization/assets/results) — Inference outputs produced by the application.
+- [assets/videos/](F:/project/crater/Crater-Boulder-Detection.worktrees/repo-cleanup-and-professionalization/assets/videos) — Demo recordings.
+- [web/](F:/project/crater/Crater-Boulder-Detection.worktrees/repo-cleanup-and-professionalization/web) — Static demo pages.
+- [resources/](F:/project/crater/Crater-Boulder-Detection.worktrees/repo-cleanup-and-professionalization/resources) — Research papers and references.
+- [LICENSE](F:/project/crater/Crater-Boulder-Detection.worktrees/repo-cleanup-and-professionalization/LICENSE)
 
-- Python
-- OpenCV
-- NumPy
-- Pillow
-- Streamlit
-- Ultralytics YOLO
+---
 
-## Repository structure
+## Quick start
 
-```text
-.
-├── crater_detection/        # Core app package
-│   ├── __init__.py
-│   ├── app.py               # Streamlit application entrypoint
-│   ├── config.py            # Centralized model configuration
-│   └── inference.py         # Detection and export utilities
-├── models/                  # Model weights location
-│   └── README.md
-├── .env.example             # Example environment configuration
-├── .gitignore               # Clean repo hygiene
-├── app.py                   # Root app launch wrapper
-├── app_streamlit.py         # Compatibility wrapper
-├── requirements.txt         # Dependency list
-├── LICENSE
-├── README.md
-├── resources/               # Research papers and supporting material
-├── yolo_model/              # Local YOLO training outputs and artifacts
-├── *.ipynb                  # Legacy exploratory notebooks retained for reference
-└── ...
-```
+1. Create and activate a Python virtual environment (recommended):
 
-## Setup
+   Windows PowerShell
 
-1. Clone the repository.
-2. Create a virtual environment.
-3. Install dependencies:
+   ```powershell
+   python -m venv .venv
+   .\.venv\Scripts\Activate.ps1
+   ```
+
+   macOS / Linux
+
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate
+   ```
+
+2. Install the required packages (if a requirements.txt is not present, install these core packages):
 
 ```bash
-pip install -r requirements.txt
+pip install opencv-python pillow numpy streamlit ultralytics
 ```
 
-4. Add the trained YOLO weights to `models/best.pt`.
+3. Place your trained YOLO weights at `models/best.pt` or set the environment variable `CRATER_MODEL_PATH` to the absolute path of the .pt file.
 
-If you want to use a different location, set:
+Example (Windows PowerShell):
 
-```bash
-export CRATER_MODEL_PATH="/path/to/your/model/best.pt"
+```powershell
+$env:CRATER_MODEL_PATH = 'C:\path\to\best.pt'
 ```
 
-## Run the app
+---
+
+## Usage
+
+Interactive (Streamlit)
 
 ```bash
 streamlit run src/streamlit_app.py
 ```
 
-or:
+The Streamlit application provides an interface to upload an image, invoke detection, preview annotated results, and download PNG/XML outputs.
+
+Programmatic (Flask)
 
 ```bash
-python app.py
+python src/flask_app.py
 ```
 
-## Model requirements
+Send a POST request (form field `file`) to `/upload`. The endpoint returns a PNG image with visualized detections and saves a copy to `assets/results/`.
 
-The trained `.pt` file is intentionally not committed to GitHub because of its size. Place it in the `models/` directory or point `CRATER_MODEL_PATH` to your local copy.
+---
 
-## Example outputs
+## Examples
 
-The repository includes sample images and generated results from exploratory runs for visualization and validation.
+Sample input:
 
-## Project impact
+![Sample input](F:/project/crater/Crater-Boulder-Detection.worktrees/repo-cleanup-and-professionalization/assets/images/sample_input.jpg)
 
-This project is relevant to:
+Segmentation example:
 
-- Planetary science and lunar geology
-- Hazard mapping for landing zones
-- Computer vision in remote sensing
-- AI-driven autonomous exploration workflows
+![Segmentation example](F:/project/crater/Crater-Boulder-Detection.worktrees/repo-cleanup-and-professionalization/assets/images/segmentation_example.png)
+
+Predicted output (high resolution):
+
+![Predicted high resolution](F:/project/crater/Crater-Boulder-Detection.worktrees/repo-cleanup-and-professionalization/assets/images/predicted_highres.png)
+
+User interface preview:
+
+![UI screenshot 1](F:/project/crater/Crater-Boulder-Detection.worktrees/repo-cleanup-and-professionalization/assets/images/ui_screenshot_1.png)
+
+![UI screenshot 2](F:/project/crater/Crater-Boulder-Detection.worktrees/repo-cleanup-and-professionalization/assets/images/ui_screenshot_2.png)
+
+---
+
+## Processing pipeline (overview)
+
+The following diagram summarizes the main data flow used by the applications and notebooks:
+
+```
++--------------------+
+| 1) Input image     |
++--------------------+
+          |
+          v
++--------------------+
+| 2) Tile splitter   |
+|    (fixed-size     |
+|     tiles + overlap)
++--------------------+
+          |
+          v
++--------------------+
+| 3) YOLO inference  |
+|    (per-tile model |
+|     prediction)    |
++--------------------+
+          |
+          v
++--------------------+    +--------------------+
+| 4) Postprocessing  | -> | 5) Outputs          |
+|    (merge, NMS,    |    | - annotated PNG     |
+|     format export) |    | - XML annotations   |
++--------------------+    | - summary text file |
+                          +--------------------+
+```
+
+This diagram is intended as a compact reference for the repository structure and runtime flow.
+
+---
 
 ## License
 
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+This project is distributed under the MIT License. See [LICENSE](F:/project/crater/Crater-Boulder-Detection.worktrees/repo-cleanup-and-professionalization/LICENSE) for details.
+
+---
+
+If you would like the README to include a short architecture diagram or step-by-step example output with captions, confirm and I will add that using the existing assets (no new files).
