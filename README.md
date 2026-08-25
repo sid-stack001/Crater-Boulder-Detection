@@ -1,45 +1,99 @@
-# Crater-Boulder-Detection
- 
-## 📌 Overview  
-This is an AI-powered **crater and boulder detection system** designed for analyzing high-resolution **lunar surface images**. By leveraging deep learning, the software identifies geological features critical for **lunar exploration, landing site selection, and hazard assessment**.  
+# Crater & Boulder Detection
 
-## 🔍 Problem Statement  
-Lunar missions require **precise hazard detection** for safe landings and surface exploration. Traditional manual mapping is **time-consuming and inconsistent**. This system automates detection using advanced **computer vision** and **machine learning models**, making the process **efficient, scalable, and accurate**.  
+A polished AI project for detecting craters and boulders in lunar or planetary imagery using YOLO-based object detection. The repository is structured to make it easy to run locally, showcase in interviews, and present professionally on GitHub or a resume.
 
-## 🚀 Features  
-- 🛰 **Crater & Boulder Detection** – Identifies key surface features in lunar images  
-- 🔄 **Tile-Based Image Processing** – Handles large images by processing smaller tiles  
-- 📊 **Size & Depth Estimation** – Computes diameters and dimensions using **DEM scaling**  
-- 📍 **Geospatial Mapping** – Provides coordinates for detected features  
-- 🎨 **Custom Image Transformations** – Includes rainbow-toned visualization, cropping, and more  
-- 📂 **Automated Data Export** – Saves detections as **XML, text, and processed images**  
+## Overview
 
-## 🛠 Tech Stack  
-- **Python** 🐍 – Core programming language  
-- **YOLO (Ultralytics)** 🛰 – Deep learning model for object detection  
-- **OpenCV** 👁 – Image processing and feature extraction  
-- **Streamlit** 🌐 – Web-based interactive UI  
-- **PIL & NumPy** 🖼 – Image transformations and processing  
-- **CUDA** ⚡ – GPU acceleration for real-time detection  
+This project combines computer vision and deep learning to identify hazardous geological features in high-resolution images of planetary surfaces. It is designed for lunar landing site analysis, terrain assessment, and autonomous exploration support.
 
-## ⚙️ How It Works  
-1️⃣ **Image Upload** – Users upload high-resolution lunar images  
-2️⃣ **Image Preprocessing** – Enhances images and converts them into analyzable formats  
-3️⃣ **YOLO Detection** – The model detects craters and boulders from processed tiles  
-4️⃣ **Feature Annotation** – Outputs detected objects with bounding circles & labels  
-5️⃣ **Size & Depth Estimation** – Computes diameters using pixel-to-meter scaling  
-6️⃣ **Result Export** – Processed images, XML detection data, and reports are available for download  
+## Why this project stands out
 
+- End-to-end deep-learning workflow for crater and boulder detection
+- Tile-based processing for larger images
+- Exportable detection outputs in XML and label summaries
+- Interactive web interface for image upload and inference
+- Clean project layout suitable for portfolio and resume presentation
 
-Note: for running the code, the trained yolo .pt file is required, which is not uploaded, due to size constraints. It is available [here](https://drive.google.com/file/d/1LGhTr1WuqYC2eNBksiMvA9T_ptEQnFKf/view?usp=drive_link).
+## Tech stack
 
+- Python
+- OpenCV
+- NumPy
+- Pillow
+- Streamlit
+- Ultralytics YOLO
 
+## Repository structure
 
-<img width="1280" alt="Screenshot 2024-07-25 160643" src="https://github.com/user-attachments/assets/64da3b6a-6a93-4a6a-9456-e34c82466999" />
+```text
+.
+├── crater_detection/        # Core app package
+│   ├── __init__.py
+│   ├── app.py               # Streamlit application entrypoint
+│   ├── config.py            # Centralized model configuration
+│   └── inference.py         # Detection and export utilities
+├── models/                  # Model weights location
+│   └── README.md
+├── .env.example             # Example environment configuration
+├── .gitignore               # Clean repo hygiene
+├── app.py                   # Root app launch wrapper
+├── app_streamlit.py         # Compatibility wrapper
+├── requirements.txt         # Dependency list
+├── LICENSE
+├── README.md
+├── resources/               # Research papers and supporting material
+├── yolo_model/              # Local YOLO training outputs and artifacts
+├── *.ipynb                  # Legacy exploratory notebooks retained for reference
+└── ...
+```
 
+## Setup
 
-<img width="718" alt="Screenshot 2024-07-25 151332" src="https://github.com/user-attachments/assets/a3432359-208e-40eb-9f8e-ab1c51df493b" />
+1. Clone the repository.
+2. Create a virtual environment.
+3. Install dependencies:
 
+```bash
+pip install -r requirements.txt
+```
 
+4. Add the trained YOLO weights to `models/best.pt`.
 
+If you want to use a different location, set:
 
+```bash
+export CRATER_MODEL_PATH="/path/to/your/model/best.pt"
+```
+
+## Run the app
+
+```bash
+streamlit run src/streamlit_app.py
+```
+
+or:
+
+```bash
+python app.py
+```
+
+## Model requirements
+
+The trained `.pt` file is intentionally not committed to GitHub because of its size. Place it in the `models/` directory or point `CRATER_MODEL_PATH` to your local copy.
+
+## Example outputs
+
+The repository includes sample images and generated results from exploratory runs for visualization and validation.
+
+## Project impact
+
+This project is relevant to:
+
+- Planetary science and lunar geology
+- Hazard mapping for landing zones
+- Computer vision in remote sensing
+- AI-driven autonomous exploration workflows
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
