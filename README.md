@@ -1,6 +1,13 @@
 # Crater & Boulder Detection
 
-Professional implementation for automated detection of craters and boulders in high-resolution planetary imagery using Ultralytics YOLO and standard image-processing libraries.
+<!-- Place these badges immediately below the repository title in README.md -->
+
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-%3E%3D1.13-orange?logo=pytorch&logoColor=white)](https://pytorch.org/)
+[![Ultralytics YOLO](https://img.shields.io/badge/YOLO-Ultralytics-black?style=flat-square)](https://ultralytics.com/)
+[![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
+
+Hackathon project on automated detection of craters and boulders in high-resolution planetary imagery using Ultralytics YOLO and standard image-processing libraries.
 
 ---
 
@@ -82,21 +89,14 @@ Send a POST request (form field `file`) to `/upload`. The endpoint returns a PNG
 
 Sample input:
 
-![Sample input](assets/images/sample_input.jpg)
-
-Segmentation example:
-
-![Segmentation example](assets/images/segmentation_example.png)
+<img src="assets/images/sample_input.jpg" alt="Sample input" width="50%" />
 
 Predicted output (high resolution):
-
 ![Predicted high resolution](assets/images/predicted_highres.png)
 
 User interface preview:
 
 ![UI screenshot 1](assets/images/ui_screenshot_1.png)
-
-![UI screenshot 2](assets/images/ui_screenshot_2.png)
 
 ---
 
