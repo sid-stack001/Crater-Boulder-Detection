@@ -82,21 +82,21 @@ Send a POST request (form field `file`) to `/upload`. The endpoint returns a PNG
 
 Sample input:
 
-![Sample input](F:/project/crater/Crater-Boulder-Detection.worktrees/repo-cleanup-and-professionalization/assets/images/sample_input.jpg)
+![Sample input](assets/images/sample_input.jpg)
 
 Segmentation example:
 
-![Segmentation example](F:/project/crater/Crater-Boulder-Detection.worktrees/repo-cleanup-and-professionalization/assets/images/segmentation_example.png)
+![Segmentation example](assets/images/segmentation_example.png)
 
 Predicted output (high resolution):
 
-![Predicted high resolution](F:/project/crater/Crater-Boulder-Detection.worktrees/repo-cleanup-and-professionalization/assets/images/predicted_highres.png)
+![Predicted high resolution](assets/images/predicted_highres.png)
 
 User interface preview:
 
-![UI screenshot 1](F:/project/crater/Crater-Boulder-Detection.worktrees/repo-cleanup-and-professionalization/assets/images/ui_screenshot_1.png)
+![UI screenshot 1](assets/images/ui_screenshot_1.png)
 
-![UI screenshot 2](F:/project/crater/Crater-Boulder-Detection.worktrees/repo-cleanup-and-professionalization/assets/images/ui_screenshot_2.png)
+![UI screenshot 2](assets/images/ui_screenshot_2.png)
 
 ---
 
